@@ -113,6 +113,7 @@ class Reproductor {
         this.ahoraSuena = 0;
     }
     playPause(){
+        const playPauseBtn = document.getElementById('playPauseBtn');
         if (this.enReproduccion){
             this.enReproduccion = false;
             document.getElementById('playPauseBtn').textContent = 'Reproducir';
@@ -126,7 +127,7 @@ class Reproductor {
     stop(){
         this.enReproduccion = false;
         document.getElementById('playPauseBtn').textContent = 'Reproducir';
-        document.getElementById('songDetails').textContent = ''; //limpia residuos de una cancion detalles
+        document.getElementById('songDetails').innerHTML = ''; //limpia residuos de una cancion detalles
     }
 
     shuffle(){
@@ -155,22 +156,24 @@ class Reproductor {
         `<img src="${song.imagen}" alt="Portada del álbum">
             <p>Álbum: ${song.album}</p>
             <p>Artista: ${song.artista}</p>
-            <p>Duración: ${song.duracion}</p>`
+            <p>Duración: ${song.duracion}</p>`;
         
         document.getElementById('songDetails').innerHTML = songDetails;
     }
 }
 
-function play(songIndex) {
-    reproductor.stop(); 
-    reproductor.ahoraSuena = songIndex; 
-    reproductor.playPause(); 
-}
+document.addEventListener("DOMContentLoaded", function() {
+    const reproductor = new Reproductor(songs);
 
-const reproductor = new Reproductor(songs);
+    function play(songIndex) {
+        reproductor.stop(); 
+        reproductor.ahoraSuena = songIndex; 
+        reproductor.playPause(); 
+    }
 
-document.getElementById('playPauseBtn').addEventListener('click', () => reproductor.playPause());
-document.getElementById('stopBtn').addEventListener('click', () => reproductor.stop());
-document.getElementById('shuffleBtn').addEventListener('click', () => reproductor.shuffle());
-document.getElementById('prevBtn').addEventListener('click', () => reproductor.prev());
-document.getElementById('nextBtn').addEventListener('click', () => reproductor.next());
+    document.getElementById('playPauseBtn').addEventListener('click', () => reproductor.playPause());
+    document.getElementById('stopBtn').addEventListener('click', () => reproductor.stop());
+    document.getElementById('shuffleBtn').addEventListener('click', () => reproductor.shuffle());
+    document.getElementById('prevBtn').addEventListener('click', () => reproductor.prev());
+    document.getElementById('nextBtn').addEventListener('click', () => reproductor.next());
+});
