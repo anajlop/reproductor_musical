@@ -111,42 +111,53 @@ class Reproductor {
         this.songs = songs;
         this.enReproduccion = false;
         this.ahoraSuena = 0;
+        this.audioElement = new Audio();
+        this.showSongInSite();
     }
     playPause(){
         const playPauseBtn = document.getElementById('playPauseBtn');
         if (this.enReproduccion){
             this.enReproduccion = false;
-            document.getElementById('playPauseBtn').textContent = 'Reproducir';
+            this.audioElement.pause();
+            playPauseBtn.textContent = 'Reproducir';
         } else {
             this.enReproduccion = true;
-            document.getElementById('playPauseBtn').textContent = 'Pausar';
-            this.showSongInSite();
+            this.audioElement.src = this.songs[this.ahoraSuena].audio;
+            this.audioElement.play();
+            playPauseBtn.textContent = 'Pausar';
         }
     }
 
     stop(){
         this.enReproduccion = false;
+        this.audioElement.pause();
+        this.audioElement.currentTime = 0;
         document.getElementById('playPauseBtn').textContent = 'Reproducir';
         document.getElementById('songDetails').innerHTML = ''; //limpia residuos de una cancion detalles
     }
 
     shuffle(){
-        //abajo esta pa que genere número aleatorio dela cancion
+        this.stop();
         this.ahoraSuena = Math.floor(Math.random() * this.songs.length);
         this.showSongInSite();
+        this.playPause();
     }
 
     next(){
+        this.stop();
         if (this.ahoraSuena < this.songs.length - 1){
             this.ahoraSuena++;
             this.showSongInSite();
+            this.playPause();
         }
     }
 
     prev(){
+        this.stop();
         if (this.ahoraSuena > 0){
             this.ahoraSuena--;
             this.showSongInSite();
+            this.playPause();
         }
     }
 
