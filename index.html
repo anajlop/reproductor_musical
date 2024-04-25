@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor Musical</title>
+</head>
+<body>
+    <h1>Reproductor Musical</h1>
+
+    <div id="songList">
+        <h2>Lista de Canciones</h2>
+        <ul>
+            <li><a href="#" onclick="play(0)">Bad idea - Chris Grey</a></li>
+            <li><a href="#" onclick="play(1)">Body On Mine - Dauble</a></li>
+            <li><a href="#" onclick="play(2)">Broken Line - Limi</a></li>
+            <li><a href="#" onclick="play(3)">Code Red - Darci</a></li>
+            <li><a href="#" onclick="play(4)">Control - Bury</a></li>
+            <li><a href="#" onclick="play(5)">Fatal Attraction - Reed Wonder & Aurora Olivas</a></li>
+            <li><a href="#" onclick="play(6)">Hypnotica - Dark Eye ft.Myllo</a></li>
+            <li><a href="#" onclick="play(7)">In Your Arms - Kuoga</a></li>
+            <li><a href="#" onclick="play(8)">One More Night - Chris Grey</a></li>
+            <li><a href="#" onclick="play(9)">Snow Ocean - A1xa</a></li>
+            <li><a href="#" onclick="play(10)">Soundproof - Autumn Corin</a></li>
+            <li><a href="#" onclick="play(11)">Summertime - Limi</a></li>
+            <li><a href="#" onclick="play(12)">Time travel - Biffuzi ft.CJ Whoopty</a></li>
+            <li><a href="#" onclick="play(13)">Use Me - Dxvn</a></li>
+            <li><a href="#" onclick="play(14)">Weaker Girl - Cheyanne</a></li>
+        </ul>
+    </div>
+
+    <div id="songDetails"> 
+        <h2>Detalles de la Canción</h2>
+        <img id="songImage" src="" alt="Portada del álbum">
+        <p id="songAlbum">Álbum:</p>
+        <p id="songArtist">Artista:</p>
+        <p id="songDuration">Duración:</p>
+    </div>
+
+    <div id="controls">
+        <button id="playPauseBtn">Reproducir</button>
+        <button id="stopBtn">Detener</button>
+        <button id="shuffleBtn">Aleatorio</button>
+        <button id="prevBtn">Anterior</button>
+        <button id="nextBtn">Siguiente</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
