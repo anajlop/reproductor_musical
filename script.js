@@ -142,7 +142,7 @@ class Reproductor {
     }
 
     shuffle(){
-        const previousSong = this.ahoraSuena;
+        let previousSong = this.ahoraSuena;
         this.ahoraSuena = Math.floor(Math.random() * this.songs.length);
         if(this.ahoraSuena === previousSong && this.songs.length > 1){
             this.ahoraSuena = (this.ahoraSuena + 1) % this.songs.length;
@@ -184,9 +184,27 @@ document.addEventListener("DOMContentLoaded", function() {
         reproductor.playPause(); 
     }
 
-    document.getElementById('playPauseBtn').addEventListener('click', () => reproductor.playPause());
-    document.getElementById('stopBtn').addEventListener('click', () => reproductor.stop());
-    document.getElementById('shuffleBtn').addEventListener('click', () => reproductor.shuffle());
-    document.getElementById('prevBtn').addEventListener('click', () => reproductor.prev());
-    document.getElementById('nextBtn').addEventListener('click', () => reproductor.next());
+    const controlButtons = document.querySelectorAll('.control-btn');
+    controlButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            const buttonId = event.target.id;
+            switch(buttonId) {
+                case 'playPauseBtn':
+                    reproductor.playPause();
+                    break;
+                case 'stopBtn':
+                    reproductor.stop();
+                    break;
+                case 'shuffleBtn':
+                    reproductor.shuffle();
+                    break;
+                case 'prevBtn':
+                    reproductor.prev();
+                    break;
+                case 'nextBtn':
+                    reproductor.next();
+                    break;
+            }
+        });
+    });
 });
