@@ -112,6 +112,7 @@ class Reproductor {
         this.enReproduccion = false;
         this.ahoraSuena = 0;
         this.audioElement = new Audio();
+        this.audioElement.addEventListener('timeupdate', () => this.updateProgressBar());
         this.showSongInSite();
     }
     playPause(){
@@ -161,6 +162,12 @@ class Reproductor {
         this.ahoraSuena = (this.ahoraSuena - 1 + this.songs.length) % this.songs.length;
         this.stop();
         this.playPause();
+    }
+
+    updateProgressBar() {
+        const progressBar = document.getElementById('progressBar');
+        const percentage = (this.audioElement.currentTime / this.audioElement.duration) * 100;
+        progressBar.style.width = percentage + '%';
     }
 
     showSongInSite(){//detalle cancion en el sitio

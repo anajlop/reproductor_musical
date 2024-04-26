@@ -4,6 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 12% 0 0;
+    background-color: #c4b7b7;
 }
 
 .reproductor {
@@ -45,14 +46,16 @@ body {
 #progressContainer {
     width: 300px;
     height: 10px;
-    background-color: #292222;
+    background-color: #000000;
     margin: 20px auto;
+    position: relative;
 }
 
-#progressBar {
+#progressBar { /*labarrita avanza*/
     height: 100%;
-    background-color: #c5c5c5;
+    background-color: #7e0808;
     width: 0;
+    position: absolute;
 }
 
 #songList {
