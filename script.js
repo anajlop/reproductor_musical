@@ -119,12 +119,15 @@ class Reproductor {
         if (this.enReproduccion){
             this.enReproduccion = false;
             this.audioElement.pause();
-            playPauseBtn.textContent = 'Reproducir';
+            playPauseBtn.classList.remove('pause');
+            playPauseBtn.src ='images/cover/icons/jugar.png';
         } else {
             this.enReproduccion = true;
             this.audioElement.src = this.songs[this.ahoraSuena].audio;
             this.audioElement.play();
-            playPauseBtn.textContent = 'Pausar';
+            playPauseBtn.classList.add('pause');
+            playPauseBtn.src ='images/cover/icons/pausa.png';
+            this.showSongInSite();
         }
     }
 
@@ -132,33 +135,32 @@ class Reproductor {
         this.enReproduccion = false;
         this.audioElement.pause();
         this.audioElement.currentTime = 0;
-        document.getElementById('playPauseBtn').textContent = 'Reproducir';
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        playPauseBtn.classList.remove('pause');
+        playPauseBtn.src ='images/cover/icons/jugar.png';
         document.getElementById('songDetails').innerHTML = ''; //limpia residuos de una cancion detalles
     }
 
     shuffle(){
-        this.stop();
+        const previousSong = this.ahoraSuena;
         this.ahoraSuena = Math.floor(Math.random() * this.songs.length);
-        this.showSongInSite();
+        if(this.ahoraSuena === previousSong && this.songs.length > 1){
+            this.ahoraSuena = (this.ahoraSuena + 1) % this.songs.length;
+        }
+        this.stop();
         this.playPause();
     }
 
     next(){
+        this.ahoraSuena = (this.ahoraSuena + 1) % this.songs.length;
         this.stop();
-        if (this.ahoraSuena < this.songs.length - 1){
-            this.ahoraSuena++;
-            this.showSongInSite();
-            this.playPause();
-        }
+        this.playPause();
     }
 
     prev(){
+        this.ahoraSuena = (this.ahoraSuena - 1 + this.songs.length) % this.songs.length;
         this.stop();
-        if (this.ahoraSuena > 0){
-            this.ahoraSuena--;
-            this.showSongInSite();
-            this.playPause();
-        }
+        this.playPause();
     }
 
     showSongInSite(){//detalle cancion en el sitio

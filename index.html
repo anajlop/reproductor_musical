@@ -4,11 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reproductor Musical</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Reproductor Musical</h1>
-
-    <div id="songList">
+    <div class="Reproductor">
+        <div id="songDetails"> 
+            <img id="songImagen" src="" alt="Portada del álbum">
+            <p id="songAlbum">Álbum:</p>
+            <p id="songArtist">Artista:</p>
+            <p id="songDuration">Duración:</p>
+        </div>
+        <div id="controls">
+            <img id="playPauseBtn" src="images/cover/icons/jugar.png" alt="Reproducir">
+            <img id="shuffleBtn" src="images/cover/icons/repetir.png" alt="Aleatorio">
+            <img id="prevBtn" src="images/cover/icons/atras.png" alt="Anterior">
+            <img id="nextBtn" src="images/cover/icons/siguiente.png" alt="Siguiente">
+        </div>
+        <div id="progressContainer">
+            <div id="progressBar"></div>
+        </div>
+    <ul id="songList">
         <h2>Lista de Canciones</h2>
         <ul>
             <li><a href="#" onclick="play(0)">Bad idea - Chris Grey</a></li>
@@ -27,22 +42,7 @@
             <li><a href="#" onclick="play(13)">Use Me - Dxvn</a></li>
             <li><a href="#" onclick="play(14)">Weaker Girl - Cheyanne</a></li>
         </ul>
-    </div>
-
-    <div id="songDetails"> 
-        <h2>Detalles de la Canción</h2>
-        <img id="songImagen" src="" alt="Portada del álbum">
-        <p id="songAlbum">Álbum:</p>
-        <p id="songArtist">Artista:</p>
-        <p id="songDuration">Duración:</p>
-    </div>
-
-    <div id="controls">
-        <img id="playPauseBtn" src="images/cover/icons/jugar.png" alt="Reproducir">
-        <img id="stopBtn" src="images/cover/icons/pausa.png" alt="Pausar">
-        <img id="shuffleBtn" src="images/cover/icons/repetir.png" alt="Aleatorio">
-        <img id="prevBtn" src="images/cover/icons/atras.png" alt="Anterior">
-        <img id="nextBtn" src="images/cover/icons/siguiente.png" alt="Siguiente">
+    </ul>
     </div>
     <script type="text/javascript" src="script.js"></script>
 </body>
